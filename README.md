@@ -1,24 +1,18 @@
-# README
+# nagano_cake
+This site is an EC site.
+We sell Nagano CAKE products.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Dependency
+Ruby 3.1.2p20
+使用言語とバージョン、必要なライブラリとそのバージョンを書く
+Pythonならrequirements.txtを用意するのも良い
 
-Things you may want to cover:
+## Setup
 
-* Ruby version
+## Usage
 
-* System dependencies
+## License
 
-* Configuration
+## Authors
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## References
