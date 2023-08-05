@@ -10,32 +10,31 @@ Rails.application.routes.draw do
   }
 
 
-  # scope module: :public do
+  scope module: :public do
 
-  #   root to: 'homes/top'
-  #   get 'homes/about', as: 'about'
+    get '/' => 'homes#top'
+    get 'about' => 'homes#about', as: 'about'
 
-  #   resources :items, only: [:index, :show]
+    resources :items, only: [:index, :show]
 
-  #   resource :customers, only: [:edit, :update]
-  #   get 'customers/my_page', as: 'my_page'
-  #   get 'customers/confirm', as: 'confirm'
-  #   patch 'customers/withdraw', as: 'withdraw'
+    resource :customers, only: [:edit, :update]
+    get 'customers/my_page', as: 'my_page'
+    get 'customers/confirm', as: 'customer_confirm'
+    patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw'
 
-  #   resources :shipping_addresses, except: [:new, :show]
+    resources :shipping_addresses, except: [:new, :show]
 
-  #   resources :cart_items, only: [:index, :update, :create, :destroy]
-  #   delete 'cart_items/destroy_all', as: 'destroy_all'
+    resources :cart_items, only: [:index, :update, :create, :destroy]
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all', as: 'destroy_all'
 
-  #   resources :orders, only: [:new, :create, :index, :show]
-  #   post 'orders/confirm', as: 'confirm'
-  #   get 'orders/complete', as: 'complete'
+    resources :orders, only: [:new, :create, :index, :show]
+    post 'orders/confirm' => 'orders#confirm', as: 'order_confirm'
+    get 'orders/complete', as: 'complete'
 
-  # end
+  end
 
   namespace :admin do
-    # root to: 'admin/homes/top'
-
+    get '/' => 'homes#top'
     resources :items, except: [:destroy]
     resources :genres, only: [:create, :index, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
