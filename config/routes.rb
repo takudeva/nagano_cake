@@ -1,58 +1,50 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'orders/show'
-  end
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-  end
-  namespace :admin do
-    get 'genres/index'
-    get 'genres/edit'
-  end
-  namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/show'
-    get 'items/edit'
-  end
-  namespace :admin do
-    get 'homes/top'
-  end
-  namespace :public do
-    get 'orders/new'
-    get 'orders/confirm'
-    get 'orders/complete'
-    get 'orders/index'
-    get 'orders/show'
-  end
-  namespace :public do
-    get 'cart_items/index'
-  end
-  namespace :public do
-    get 'shipping_addresses/index'
-    get 'shipping_addresses/edit'
-  end
-  namespace :public do
-    get 'customers/my_page'
-    get 'customers/confirm'
-  end
-  namespace :public do
-    get 'items/index'
-    get 'items/show'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
-  devise_for :admin, skip: [:registrations, :passwords], controllers: {
-    sessions: 'admin/sessions'
-  }
 
   devise_for :customers, skip: [:passwords], controllers: {
     registrations: 'public/registrations',
     sessions: 'public/sessions'
   }
+
+  devise_for :admin, skip: [:registrations, :passwords], controllers: {
+    sessions: 'admin/sessions'
+  }
+
+
+  # scope module: :public do
+
+  #   root to: 'homes/top'
+  #   get 'homes/about', as: 'about'
+
+  #   resources :items, only: [:index, :show]
+
+  #   resource :customers, only: [:edit, :update]
+  #   get 'customers/my_page', as: 'my_page'
+  #   get 'customers/confirm', as: 'confirm'
+  #   patch 'customers/withdraw', as: 'withdraw'
+
+  #   resources :shipping_addresses, except: [:new, :show]
+
+  #   resources :cart_items, only: [:index, :update, :create, :destroy]
+  #   delete 'cart_items/destroy_all', as: 'destroy_all'
+
+  #   resources :orders, only: [:new, :create, :index, :show]
+  #   post 'orders/confirm', as: 'confirm'
+  #   get 'orders/complete', as: 'complete'
+
+  # end
+
+  namespace :admin do
+    # root to: 'admin/homes/top'
+
+    resources :items, except: [:destroy]
+    resources :genres, only: [:create, :index, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :orders, only: [:show]
+    patch 'orders/:id/order_status' => 'orders#order_status', as: 'order_status'
+    patch 'order_items/:id/making_status' => 'order_items#making_status', as: 'making_status'
+
+  end
+
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
