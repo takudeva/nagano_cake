@@ -1,2 +1,12 @@
 <h1>Public::Customers#my_page</h1>
 <p>Find me in app/views/public/customers/my_page.html.erb</p>
+
+<div class="container">
+  <p class="pl-5 mb-5">マイページ</p>
+  <div class="row">
+    <span class="h5">登録情報</span>
+  </div>
+  <div class="row">
+    <h1><%= @customer.last_name %> <%= @customer.first_name %></h1>
+  </div>
+</div>
