@@ -5,4 +5,7 @@ class Public::CustomersController < ApplicationController
 
   def confirm
   end
+
+  def edit
+  end
 end
