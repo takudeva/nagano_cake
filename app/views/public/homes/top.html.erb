@@ -1,2 +1,62 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ジャンル検索</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-9">
+
+      <div class="card introduction">
+        <%= image_tag 'sweets_pancake.png', class: "card-img" %>
+        <div class="card-img-overlay d-flex">
+          <div class="m-auto bg-white border">
+            <p>
+              ようこそ、ながのCAKEへ！</br>
+              このサイトは、ケーキ販売のECサイトになります。</br>
+              会員でない方も商品の閲覧はできますが、</br>
+              購入には会員登録が必要になります。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="new-items-title">
+        <h1>新着商品</h1>
+
+        <div class="new-items d-flex">
+          <div class="new-item card mr-2" style="max-width:10rem;">
+            <%= image_tag 'kangaroo.png', class: "card-img-top" %>
+            <div class="card-body">
+              <h6 class="card-title">
+                kangaroo1
+              </h6>
+            </div>
+          </div>
+          <div class="new-item card mr-2" style="max-width:10rem;">
+            <%= image_tag 'kangaroo.png', class: "card-img-top" %>
+            <div class="card-body">
+              <h6 class="card-title">
+                kangaroo2
+              </h6>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="link mt-3 text-right">
+        <%= link_to "すべての商品を見る >", items_path %>
+      </div>
+
+    </div>
+  </div>
+</div>
