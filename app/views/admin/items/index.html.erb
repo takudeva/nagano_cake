@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row ml-3 mb-3">
-    <h1 class="col-3">商品一覧</h1>
+    <h3 class="col-3">商品一覧</h3>
     <%= link_to new_admin_item_path, class: "offset-7 col-2" do %>
       <i class="fa-solid fa-plus fa-3x border rounded-circle shadow"></i>
     <% end %>
@@ -41,4 +41,5 @@
       <% end %>
     </tbody>
   </table>
+  <%= paginate @items %>
 </div>
