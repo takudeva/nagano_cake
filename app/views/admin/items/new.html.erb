@@ -1,20 +1,12 @@
 <div class="container">
-  <div class="row d-block">
-    <h1 class="new-item-registration-title">
-      商品新規登録
-    </h1>
-    <table class="table table-borderless new-item-registration mx-auto">
-      <tbody>
-        <%= form_with model: @item, url: admin_items_path do |f| %>
-          <tr>
-            <td>商品画像</td>
-            <td>
-              <%= image_tag %>
-            </td>
-          </tr>
-      </tbody>
-        </div>
-    </table>
-  </div>
+  <h1 class="new-item-registration-title ml-3">
+    商品新規登録
+  </h1>
+  <%= form_with model: @item, url: admin_items_path do |f| %>
+    <div class="row my-3 justify-content-center">
+      <%= f.label :image, "商品画像", class: "form-label col-2" %>
+      <%= f.file_field :image, accept: "image/*", class: "col-4" %>
+    </div>
+  <% end %>
 
 </div>
