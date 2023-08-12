@@ -2,6 +2,7 @@ class Admin::ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @genres = Genre.all
   end
 
   def create
@@ -11,6 +12,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
+    @items = Item.all
   end
 
   def show
