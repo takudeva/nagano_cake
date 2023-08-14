@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="row mt-5">
 
     <%= render 'public/items/genre', genres: @genres %>
 
@@ -13,27 +13,21 @@
       <p class="mt-1 mb-4">
         <%= @item.introduction %>
       </p>
-      <p class="text-2">
+      <p style="font-size: 2rem;">
         ¥<%= @item.add_tax_price.to_s(:delimited, delimiter: ',') %>
-        <span class="text-1">(税込)</span>
+        <span style="font-size: 1rem;">(税込)</span>
       </p>
-      <div class="row mt-3">
+      <div class="row mt-3 d-inline">
         <%= form_with model: @cart_item, url: cart_items_path do |f| %>
-        <span class="col-4">
-          販売ステータス
-        </span>
-        <span class="col-8">
-            <% if @item.is_sold_out == true %>
-              <span class="text-secondary"><strong>販売停止中</strong></span>
-            <% else %>
-              <span class="text-success"><strong>販売中</strong></span>
-            <% end %>
-        </span>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-6">
-          <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-success" %>
-        </div>
+          <%= f.hidden_field :customer_id, value: current_customer.id %>
+          <%= f.hidden_field :item_id, value: @item.id %>
+          <span class="col">
+            <%= f.select :amount, *[1..10], prompt: "個数選択" %>
+          </span>
+          <span class="offset-1 col">
+          <%= f.submit "カートに入れる", class: "btn btn-success" %>
+          </span>
+        <% end %>
       </div>
     </div>
   </div>
