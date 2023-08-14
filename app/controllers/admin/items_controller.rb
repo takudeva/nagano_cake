@@ -13,7 +13,8 @@ class Admin::ItemsController < ApplicationController
 
   def index
     if params[:name]
-      @items = Item.where('name LIKE ?', "%#{params[:name]}%")
+      items = Item.where('name LIKE ?', "%#{params[:name]}%")
+      @items = items.page(params[:page])
     else
       @items = Item.page(params[:page])
     end

@@ -2,7 +2,11 @@ class Public::ItemsController < ApplicationController
   def index
     @genres = Genre.all
     if params[:name]
-      @items = Item.where('name LIKE ?', "%#{params[:name]}%")
+      items = Item.where('name LIKE ?', "%#{params[:name]}%")
+      @items = items.page(params[:page])
+    elsif params[:genre_id]
+      items = Item.where('genre_id LIKE ?', "%#{params[:genre_id]}%")
+      @items = items.page(params[:page])
     else
       @items = Item.page(params[:page])
     end
