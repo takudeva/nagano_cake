@@ -43,7 +43,7 @@
                 </li>
               </ul>
               <%= form_with url: admin_items_path, method: :get, class: "text-right" do |f| %>
-                <%= f.text_field :name %>
+                <%= f.text_field :name, placeholder: "search" %>
                 <%= f.button type: "submit" do %>
                   <i class="fa-solid fa-magnifying-glass"></i>
                 <% end %>
@@ -66,7 +66,7 @@
                 </li>
               </ul>
               <%= form_with url: items_path, method: :get, class: "text-right" do |f| %>
-                <%= f.text_field :name %>
+                <%= f.text_field :name, placeholder: "search" %>
                 <%= f.button type: "submit" do %>
                   <i class="fa-solid fa-magnifying-glass"></i>
                 <% end %>
@@ -89,7 +89,7 @@
                 </li>
               </ul>
               <%= form_with url: items_path, method: :get, class: "text-right" do |f| %>
-                <%= f.text_field :name %>
+                <%= f.text_field :name, placeholder: "search" %>
                 <%= f.button type: "submit" do %>
                   <i class="fa-solid fa-magnifying-glass"></i>
                 <% end %>

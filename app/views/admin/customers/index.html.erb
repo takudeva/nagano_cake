@@ -18,7 +18,7 @@
       </tr>
     </thead>
     <tbody>
-      <%= @customers.each do |customer| %>
+      <% @customers.each do |customer| %>
         <tr>
           <td>
             <%= customer.id %>
@@ -28,7 +28,18 @@
               <%= customer.last_name %><%= customer.first_name %>
             <% end %>
           </td>
+          <td>
+            <%= customer.email %>
+          </td>
+          <td>
+            <% if customer.is_deleated == true %>
+              <span class="text-secondary"><strong>退会</strong></span>
+            <% else %>
+              <span class="text-success"><strong>有効</strong></span>
+            <% end %>
+          </td>
         </tr>
+      <% end %>
     </tbody>
   </table>
   <div class="row text-center">

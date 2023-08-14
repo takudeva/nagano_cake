@@ -1,63 +1,35 @@
 <div class="container">
-  <div class="row">
-    <div class="col-12">
-      <h2>会員情報編集</h2>
-      <%= form_with model: @customer, url: customer_registration_path do |f| %>
-
-        <div class="field mb-2">
-          <span class="mr-5">氏名</span>
-          <span class="mr-4">
-            <%= f.label :last_name, "(姓)" %>
-            <%= f.text_field :last_name, autocomplete: true, autofocus: true %>
-          </span>
-          <span class="mr-4">
-            <%= f.label :first_name, "(名)" %>
-            <%= f.text_field :first_name, autocomplete: true %>
-          </span>
-        </div>
-
-        <div class="field mb-2">
-          <span class="mr-5">フリガナ</span>
-          <span class="mr-4">
-            <%= f.label :last_name_kana, "(セイ)" %>
-            <%= f.text_field :last_name_kana, autocomplete: true %>
-          </span>
-          <span class="mr-4">
-            <%= f.label :first_name_kana, "(メイ)" %>
-            <%= f.text_field :first_name_kana, autocomplete: true %>
-          </span>
-        </div>
-
-        <div class="field mb-2">
-          <span class="mr-5">郵便番号(ハイフンなし)</span>
-          <%= f.text_field :postal_code, autocomplete: true %>
-        </div>
-
-        <div class="field mb-2">
-          <span class="mr-5">住所</span>
-          <%= f.text_field :address, autocomplete: true %>
-        </div>
-
-        <div class="field mb-2">
-          <span class="mr-5">電話番号(ハイフンなし)</span>
-          <%= f.text_field :telephone_number, autocomplete: true %>
-        </div>
-
-        <div class="field mb-2">
-          <span class="mr-5">メールアドレス</span>
-          <%= f.email_field :email, autocomplete: true %>
-        </div>
-
-        <div class="update withdraw">
-          <span class="update">
-            <%= f.submit "編集内容を保存", class: "btn btn-success" %>
-          </span>
-          <span class="withdraw ml-5">
-            <%= link_to "退会する", customer_confirm_path, class: "btn btn-danger" %>
-          </span>
-        </div>
-      <% end %>
-
+  <h3>会員情報編集</h3>
+  <%= form_with model: @customer, url: customers_path, method: :patch do |f| %>
+    <div class="row mt-5 mb-2">
+      <span class="col-2">氏名</span>
+      <%= f.text_field :last_name, autocomplete: true, autofocus: true, class: "col-2" %>
+      <%= f.text_field :first_name, autocomplete: true, class: "col-2 ml-5" %>
     </div>
-  </div>
+    <div class="row mb-2">
+      <span class="col-2">フリガナ</span>
+      <%= f.text_field :last_name_kana, autocomplete: true, class: "col-2" %>
+      <%= f.text_field :first_name_kana, autocomplete: true, class: "col-2 ml-5" %>
+    </div>
+    <div class="row mb-2">
+      <span class="col-2">郵便番号</span>
+      <%= f.text_field :postal_code, autocomplete: true, class: "col-2" %>
+    </div>
+    <div class="row mb-2">
+      <span class="col-2">住所</span>
+      <%= f.text_field :address, autocomplete: true, class: "col-6" %>
+    </div>
+    <div class="row mb-2">
+      <span class="col-2">電話番号</span>
+      <%= f.text_field :telephone_number, autocomplete: true, class: "col-2" %>
+    </div>
+    <div class="row mb-2">
+      <span class="col-2">メールアドレス</span>
+      <%= f.email_field :email, autocomplete: true, class: "col-2" %>
+    </div>
+    <div class="row">
+      <%= f.submit "編集内容を保存", class: "offset-2 col-3 btn btn-success" %>
+      <%= link_to "退会する", customer_confirm_path, class: "offset-1 col-1 btn btn-danger" %>
+    </div>
+  <% end %>
 </div>
