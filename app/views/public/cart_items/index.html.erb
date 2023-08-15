@@ -1,2 +1,8 @@
-<h1>Public::CartItems#index</h1>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
+<div class="container">
+  <div class="row mt-3">
+    <h3 class="col-4">
+      ショッピングカート
+    </h3>
+    <%= link_to "カートを空にする", destroy_all_path, method: :delete, data: {confirm: "本当にカート内の商品を全て削除してもよろしいですか？"}, class: "btn btn-danger offset-6 col-2" %>
+  </div>
+</div>
