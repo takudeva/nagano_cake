@@ -3,7 +3,7 @@
     <h3 class="col-4">
       ショッピングカート
     </h3>
-    <%= link_to "カートを空にする", destroy_all_path, method: :delete, data: {confirm: "本当にカート内の商品を全て削除してもよろしいですか？"}, class: "btn btn-danger offset-6 col-2" %>
+    <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, data: {confirm: "本当にカート内の商品を全て削除してもよろしいですか？"}, class: "btn btn-danger offset-6 col-2" %>
     <table class="table table-bordered mt-3">
       <thead>
         <tr>
