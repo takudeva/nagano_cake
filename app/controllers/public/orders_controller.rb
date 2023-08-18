@@ -1,5 +1,6 @@
 class Public::OrdersController < ApplicationController
   def new
+    @shipping_addresses = ShippingAddress.all
   end
 
   def confirm

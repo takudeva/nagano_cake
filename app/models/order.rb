@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
+
   belongs_to :customer
 
   enum method_of_payment: { credit: 0, bank: 1 }
@@ -9,4 +10,5 @@ class Order < ApplicationRecord
     preparing_to_ship: 3,
     shipped: 4
   }
+
 end
