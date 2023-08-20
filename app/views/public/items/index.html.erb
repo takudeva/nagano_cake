@@ -11,7 +11,11 @@
       <div class="row">
         <% @items.each do |item| %>
           <div class="card mb-1 col-3" style="max-width: 25rem;">
-            <%= link_to item_path(item.id) do %>
+            <% if customer_signed_in? %>
+              <%= link_to item_path(item.id) do %>
+                <%= image_tag item.get_image(300,300), class: "card-img-top img-fluid border" %>
+              <% end %>
+            <% else %>
               <%= image_tag item.get_image(300,300), class: "card-img-top img-fluid border" %>
             <% end %>
             <div class="card-body">
