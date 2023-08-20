@@ -14,13 +14,12 @@ class Public::OrdersController < ApplicationController
       shipping_address = ShippingAddress.find(params[:order][:shipping_address_id])
       @order.postal_code = shipping_address.postal_code
       @order.address = shipping_address.address
-      @order.name = shipping_address.last_name + shipping_address.first_name
+      @order.name = shipping_address.name
     else
       @order.postal_code = params[:order][:postal_code]
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
     end
-    # binding.pry
     @postage = 800
     @cart_items = CartItem.all
     @total = @cart_items.inject(0) { |sum, cart_item| sum + cart_item.subtotal }
@@ -30,6 +29,17 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.save
+
+    @cart_items = CartItem.all
+    @cart_items.each do |cart_item|
+      @order_item = OrderItem.new
+      @order_item.order_id = @order.id
+      @order_item.item_id = cart_item.id
+      @order_item.amount = cart_item.amount
+      @order_item.purchase_price = cart_item.item.add_tax_price
+      @order_item.save
+    end
+    @cart_items.destroy_all
     redirect_to complete_orders_path
   end
 

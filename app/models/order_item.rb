@@ -1,5 +1,6 @@
 class OrderItem < ApplicationRecord
-  belongs_to :order, :item
+  belongs_to :order
+  belongs_to :item
 
   enum making_status: {
     cannot_start_making: 0,
@@ -7,5 +8,5 @@ class OrderItem < ApplicationRecord
     making: 2,
     completion_of_making: 3
   }
-  
+
 end
