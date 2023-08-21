@@ -28,16 +28,17 @@ class Public::OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
     @order.save
-
-    @cart_items = CartItem.all
+    @cart_items = current_customer.cart_items
     @cart_items.each do |cart_item|
       @order_item = OrderItem.new
       @order_item.order_id = @order.id
       @order_item.item_id = cart_item.id
       @order_item.amount = cart_item.amount
       @order_item.purchase_price = cart_item.item.add_tax_price
-      @order_item.save
+      # binding.pry
+      @order_item.save!
     end
     @cart_items.destroy_all
     redirect_to complete_orders_path

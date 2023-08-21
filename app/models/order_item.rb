@@ -1,6 +1,6 @@
 class OrderItem < ApplicationRecord
   belongs_to :order
-  belongs_to :item
+  belongs_to :item, optional: true
 
   enum making_status: {
     cannot_start_making: 0,
@@ -8,5 +8,10 @@ class OrderItem < ApplicationRecord
     making: 2,
     completion_of_making: 3
   }
+
+  def total_amount
+    order_items = self.all
+    order_items.inject(0) { |sum, order_item| sum + order_item.amount }
+  end
 
 end
