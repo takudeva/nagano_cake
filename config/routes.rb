@@ -34,8 +34,11 @@ Rails.application.routes.draw do
     resources :items, except: [:destroy]
     resources :genres, only: [:create, :index, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :orders, only: [:show]
-    patch 'orders/:id/order_status' => 'orders#order_status', as: 'order_status'
+    resources :orders, only: [:show] do
+      member do
+        patch 'order_status'
+      end
+    end
     patch 'order_items/:id/making_status' => 'order_items#making_status', as: 'making_status'
 
   end
