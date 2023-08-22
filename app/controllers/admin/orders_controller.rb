@@ -2,6 +2,9 @@ class Admin::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_items = OrderItem.where(order_id: params[:id])
+    # @postage = 800
+    @total = @order.billing_amount - @order.postage
+    # @billing_amount = @postage + @total
   end
 
   def order_status
