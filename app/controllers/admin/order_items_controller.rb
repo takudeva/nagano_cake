@@ -7,9 +7,8 @@ class Admin::OrderItemsController < ApplicationController
     @order_item.update(order_item_params)
     if @order_item.making_status == "making"
       @order.update(status: "making")
-    elsif @order_items.each do |order_item|
-      making_status == "completion_of_making"
-      @order.status == "preparing_to_ship"
+    elsif @order_items.all? { |order_item| order_item.making_status == "completion_of_making" }
+      @order.update(status: "preparing_to_ship")
     end
     redirect_to admin_order_path(@order.id)
   end
