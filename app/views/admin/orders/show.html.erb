@@ -1,5 +1,6 @@
 <div class="container">
-  <div class="row">
+  <h3>注文履歴詳細</h3>
+  <div class="row my-2">
     <div class="col-2">
       <span class="font-weight-bold">
         購入者
@@ -7,11 +8,13 @@
     </div>
     <div class="col">
       <span>
-        <%= @order.customer.last_name %> <%= @order.customer.first_name %>
+        <%= link_to admin_customer_path(@order.customer.id) do %>
+          <%= @order.customer.last_name %> <%= @order.customer.first_name %>
+        <% end %>
       </span>
     </div>
   </div>
-  <div class="row">
+  <div class="row mb-2">
     <div class="col-2">
       <span class="font-weight-bold">
         注文日
@@ -23,7 +26,7 @@
       </span>
     </div>
   </div>
-  <div class="row">
+  <div class="row mb-2">
     <div class="col-2">
       <span class="font-weight-bold">
         配送先
@@ -36,7 +39,7 @@
       </span>
     </div>
   </div>
-  <div class="row">
+  <div class="row mb-2">
     <div class="col-2">
       <span class="font-weight-bold">
         支払方法
@@ -48,8 +51,8 @@
       </span>
     </div>
   </div>
-  <div class="row">
-    <div class="col-2">
+  <div class="row mb-2">
+    <div class="col-2 align-self-center">
       <span class="font-weight-bold">
         注文ステータス
       </span>
@@ -100,7 +103,7 @@
       </tbody>
     </table>
     <div class="col-3 d-flex flex-column justify-content-end">
-      <div class="row justify-content-center">
+      <div class="row justify-content-center mb-2">
         <div class="col-7">
           <span class="font-weight-bold">商品合計</span>
         </div>
@@ -110,7 +113,7 @@
           </span>
         </div>
       </div>
-      <div class="row justify-content-center">
+      <div class="row justify-content-center mb-2">
         <div class="col-7">
           <span class="font-weight-bold">送料</span>
         </div>

@@ -1,8 +1,5 @@
 <div class="container mx-auto w-80">
-  <h3>ログイン</h3>
-  <div class="row mt-2 mb-3 offset-1">
-    <span>会員の方はこちらからログイン</span>
-  </div>
+  <h3 class="mb-5">管理者ログイン</h3>
   <%= form_with model: @admin, url: admin_session_path do |f| %>
     <div class="row mb-2 justify-content-center">
       <%= f.label :email, "メールアドレス", class: "form-label col-form-label col-2" %>
