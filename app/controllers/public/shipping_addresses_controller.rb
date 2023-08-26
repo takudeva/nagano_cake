@@ -8,7 +8,8 @@ class Public::ShippingAddressesController < ApplicationController
 
   def index
     @shipping_address = ShippingAddress.new
-    @shipping_addresses = ShippingAddress.all
+    # binding.pry
+    @shipping_addresses = ShippingAddress.where(customer_id: current_customer.id)
   end
 
   def edit
