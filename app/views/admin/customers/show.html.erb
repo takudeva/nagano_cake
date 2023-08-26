@@ -1,6 +1,6 @@
 <div class="container">
   <h3><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h3>
-  <div class="row mt-5">
+  <div class="row mt-5 mb-4">
     <span class="col-2">
       会員ID
     </span>
@@ -8,7 +8,7 @@
       <%= @customer.id %>
     </span>
   </div>
-  <div class="row mt-2">
+  <div class="row mb-4">
     <span class="col-2">
       氏名
     </span>
@@ -16,7 +16,7 @@
       <%= @customer.last_name %>　<%= @customer.first_name %>
     </span>
   </div>
-  <div class="row mt-2">
+  <div class="row mb-4">
     <span class="col-2">
       フリガナ
     </span>
@@ -24,7 +24,7 @@
       <%= @customer.last_name_kana %>　<%= @customer.first_name_kana %>
     </span>
   </div>
-  <div class="row mt-2">
+  <div class="row mb-4">
     <span class="col-2">
       郵便番号
     </span>
@@ -32,7 +32,7 @@
       <%= @customer.postal_code %>
     </span>
   </div>
-  <div class="row mt-2">
+  <div class="row mb-4">
     <span class="col-2">
       住所
     </span>
@@ -40,7 +40,7 @@
       <%= @customer.address %>
     </span>
   </div>
-  <div class="row mt-2">
+  <div class="row mb-4">
     <span class="col-2">
       電話番号
     </span>
@@ -48,7 +48,7 @@
       <%= @customer.telephone_number %>
     </span>
   </div>
-  <div class="row mt-2">
+  <div class="row mb-4">
     <span class="col-2">
       メールアドレス
     </span>
@@ -56,19 +56,19 @@
       <%= @customer.email %>
     </span>
   </div>
-  <div class="row mt-2">
+  <div class="row mb-4">
     <span class="col-2">
       会員ステータス
     </span>
     <span class="col-10">
       <% if @customer.is_deleated == true %>
-        <span class="text-secondary"><strong>退会</strong></span>
+        <span class="text-secondary font-weight-bold">退会</span>
       <% else %>
-        <span class="text-success"><strong>有効</strong></span>
+        <span class="text-success font-weight-bold">有効</span>
       <% end %>
     </span>
   </div>
-  <div class="row mt-2">
+  <div class="row">
     <span class="offset-2 col-2">
       <%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-success" %>
     </span>

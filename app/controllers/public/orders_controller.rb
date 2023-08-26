@@ -4,6 +4,16 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
   end
 
+  def index
+    @orders = Order.all
+  end
+
+  def show
+    @order = Order.find(params[:id])
+    @total = @order.billing_amount - @order.postage
+    @order_items = @order.order_items.all
+  end
+
   def confirm
     @order = Order.new(order_params)
     if params[:order][:select_address] == "0"
@@ -45,16 +55,6 @@ class Public::OrdersController < ApplicationController
   end
 
   def complete
-  end
-
-  def index
-    @orders = Order.all
-  end
-
-  def show
-    @order = Order.find(params[:id])
-    @total = @order.billing_amount - @order.postage
-    @order_items = @order.order_items.all
   end
 
   private

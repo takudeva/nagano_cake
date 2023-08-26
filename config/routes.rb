@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   scope module: :public do
 
     get '/' => 'homes#top'
@@ -20,7 +21,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :orders, only: [:new, :create, :index, :show] do
+    resources :orders, only: [:new, :index, :show, :create] do
       collection do
         post 'confirm'
         get 'complete'
