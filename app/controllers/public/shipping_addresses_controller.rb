@@ -2,13 +2,19 @@ class Public::ShippingAddressesController < ApplicationController
 
   def create
     @shipping_address = ShippingAddress.new(shipping_address_params)
-    @shipping_address.save
-    redirect_to shipping_addresses_path
+    if @shipping_address.save
+      flash[:notice] = "アドレスは適切に登録されました"
+      redirect_to shipping_addresses_path
+    else
+      flash[:notice] = "アドレスの登録に失敗しました"
+      @shipping_address = ShippingAddress.new
+      @shipping_addresses = ShippingAddress.where(customer_id: current_customer.id)
+      render "index"
+    end
   end
 
   def index
     @shipping_address = ShippingAddress.new
-    # binding.pry
     @shipping_addresses = ShippingAddress.where(customer_id: current_customer.id)
   end
 

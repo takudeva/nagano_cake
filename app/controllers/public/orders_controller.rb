@@ -1,6 +1,6 @@
 class Public::OrdersController < ApplicationController
   def new
-    @shipping_addresses = ShippingAddress.all
+    @shipping_addresses = ShippingAddress.where(customer_id: current_customer.id)
     @order = Order.new
   end
 

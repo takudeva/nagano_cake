@@ -1,4 +1,9 @@
 <div class="container">
+  
+  <h3 class="text-primary">
+    <%= flash[:notice] %>
+  </h3>
+  
   <h3>配送先一覧／登録</h3>
   <%= form_with model: @shipping_address, url: shipping_addresses_path do |f| %>
     <%= f.hidden_field :customer_id, value: current_customer.id %>
